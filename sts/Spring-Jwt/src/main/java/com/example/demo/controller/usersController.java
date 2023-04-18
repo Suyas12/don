@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.controller.usersController;
@@ -45,6 +46,10 @@ public class usersController {
 	    public List<users> getAllusers(){
 	    	return UsersRepository.findAll();
 	    }
+//	    @GetMapping("/users")
+//	    public List<users> getAllusers(@RequestParam(value = "/role") String role ){
+//	    	return UsersRepository.findAll();
+//	    }
 	    
 	    @PostMapping("/users")
 	    public users saveUsers(@RequestBody users Users) {

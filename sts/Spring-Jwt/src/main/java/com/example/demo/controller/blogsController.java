@@ -41,8 +41,7 @@ public class blogsController {
 	    }
 	    @GetMapping("/blogs/{id}")
 	    public ResponseEntity<blogs> getBlogsByID(@PathVariable int id){
-	    	blogs Blogs=BlogsRepository.findById(id)
-	    			.orElseThrow(()-> new ResourseNotFound("no record found with this id:"+id));
+	    	blogs Blogs=BlogsRepository.findById(id);
 	    	return ResponseEntity.ok(Blogs);
 	    } 
 	    @GetMapping("/blog/{username}")
@@ -59,26 +58,16 @@ public class blogsController {
 //	    } 
 	    @PutMapping("/blogs/{id}")
 	    public ResponseEntity<blogs> updateBlogs(@PathVariable int id,@RequestBody blogs Blogs){
-	    	blogs blogs2=BlogsRepository.findById(id)
-	    			.orElseThrow(()-> new ResourseNotFound("no record found with this id:"+id));
+	    	blogs blogs2=BlogsRepository.findById(id);
 	        blogs2.setTitle(Blogs.getTitle());
 	        blogs2.setDescription(Blogs.getDescription());
 	        blogs2.setUrl(Blogs.getUrl());
 	        blogs updateBlogs=BlogsRepository.save(blogs2);	
 	    	return ResponseEntity.ok(updateBlogs);
 	    }
-//	    @DeleteMapping("blogs/{id}")
-//	    public ResponseEntity<Map<String, Boolean>> deleteBlogs(@PathVariable int id){
-//	    	blogs Blogs=BlogsRepository.findById(id)
-//	    			.orElseThrow(()-> new ResourseNotFound("no record found with this id:"+id));
-//	    	BlogsRepository.delete(Blogs);
-//	    	Map<String, Boolean>response=new HashMap<>();
-//	    	response.put("deleted",Boolean.TRUE);
-//	    	return ResponseEntity.ok(response);
-//	    }
-	    @DeleteMapping("blogs/{username}")
-	    public ResponseEntity<Map<String, Boolean>> deleteBlogs(@PathVariable("username") String username){
-	    	List<blogs> Blogs=BlogsRepository.findAllByUsername(username);
+	    @DeleteMapping("blogs/{id}")
+	    public ResponseEntity<Map<String, Boolean>> deleteBlogs(@PathVariable int id){
+	    	blogs Blogs=BlogsRepository.findById(id);
 	    	BlogsRepository.delete(Blogs);
 	    	Map<String, Boolean>response=new HashMap<>();
 	    	response.put("deleted",Boolean.TRUE);

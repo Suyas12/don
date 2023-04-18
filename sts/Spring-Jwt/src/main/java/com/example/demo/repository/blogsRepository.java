@@ -8,4 +8,5 @@ import com.example.demo.model.blogs;
 
 public interface blogsRepository extends JpaRepository<blogs,Integer>{
 	public List<blogs> findAllByUsername(String username);
+	public blogs findById(int Id);
 }
