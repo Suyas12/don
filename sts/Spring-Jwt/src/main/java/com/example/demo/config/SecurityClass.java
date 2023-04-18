@@ -34,7 +34,9 @@ public class SecurityClass extends WebSecurityConfigurerAdapter{
 		 		.disable()
 		 		.authorizeRequests()
 		 		.antMatchers("/token").permitAll()
-		 		.antMatchers("/welcome").permitAll()
+		 		.antMatchers("/api/users/**").permitAll()
+		 		.antMatchers("/api/blogs/**").permitAll()
+		 		.antMatchers("/api/blog/**").permitAll()
 		 		.anyRequest().authenticated()
 		 		.and()
 		 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
